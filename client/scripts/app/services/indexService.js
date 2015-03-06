@@ -48,19 +48,26 @@
             var sParam = getSubscrParams();
             var book = getBook();
             var div = book;
+            console.log(div,book);
             var path = '';
             if(sParam.length > 1) {
-                for (var i = 1; i < sParam.length(); i++) {
+                console.log(11111111111,sParam);
+                for (var i = 1; i < sParam.length; i++) {
                     path += ' -> ' + div.name;
-                    var index = div.content.indexOf(sParam[i]);
-                    if (typeof  div === 'string')
-                        break;
-                    div = div.content[index];
+                    var index = div.content.indexOf({name: sParam[i]});
+
+                        if (index !== -1)
+                        {
+                            if (typeof  div === 'string')
+                                break;
+                        div = div.content[index];
+
+                    return {
+                        path: path,
+                        content: div.content
+                    };
                 }
-                return {
-                    path: path,
-                    content: div.content
-                };
+            }
             }
             return{
                 path: path,

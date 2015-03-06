@@ -12,9 +12,9 @@
         vm.new11 = 'sdfjkn;vajs;djav';
         vm.directory = 'Содержание';
 
-        var bl = indexService.getList();
+        vm.bookContentList = indexService.getList();
         var Ch = indexService.getChapter();
-        console.log(bl);
+        console.log(bookContentList,Ch);
     }
 
 })();

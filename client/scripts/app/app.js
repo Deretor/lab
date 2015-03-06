@@ -3,7 +3,10 @@
  */
 
 (function(){
-    var app = angular.module('app',[]);
+    var app = angular.module('app',[
+        'ngSanitize',
+        'adaptv.adaptStrap'
+    ]);
     app.run(['$rootScope',function($rootScope){
 
     }]);
