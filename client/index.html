@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html  data-ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--css-->
+    <link href="content/index.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="indexController as vm">
+    <div class="leftControlBlock">
+        <div class="mainControlBlock">
+
+        </div>
+        <div class="contentBlock">
+            <div class="contentHead">
+                {{vm.directory}}
+            </div>
+            <div class="contentBody">
+                <div ng-repeat="item in vm.bookContentList">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="../core/script/angular.min.js"> </script>
+    <script type="text/javascript" src="scripts/app/app.js"> </script>
+    <script type="text/javascript" src="scripts/app/controllers/indexController.js"> </script>
+    <script type="text/javascript" src="scripts/app/services/indexService.js"> </script>
+    <script type="text/javascript" src="scripts/app/repositories/indexRepository.js"> </script>
+</body>
+</html>
