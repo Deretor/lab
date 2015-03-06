@@ -1,3 +1,8 @@
-/**
- * Created by Deretor on 06.03.2015.
- */
+(function(){
+    angular.module('app').config(['$adConfigProvider', function ($adConfigProvider) {
+        $adConfigProvider.paging.response = {
+            totalItems: 'results.opensearch:totalResults',
+            itemsLocation: 'results.data'
+        };
+    }]);
+})();
