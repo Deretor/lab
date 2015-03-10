@@ -14,7 +14,7 @@
 
         vm.bookContentList = indexService.getList();
         var Ch = indexService.getChapter();
-        console.log(bookContentList,Ch);
+        console.log(vm.bookContentList,Ch);
     }
 
 })();

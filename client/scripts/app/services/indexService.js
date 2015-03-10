@@ -51,28 +51,35 @@
             console.log(div,book);
             var path = '';
             if(sParam.length > 1) {
-                console.log(11111111111,sParam);
                 for (var i = 1; i < sParam.length; i++) {
                     path += ' -> ' + div.name;
-                    var index = div.content.indexOf({name: sParam[i]});
+                    console.log('aaa');
+                    var DM = div.content.filter(function(item){
+                        return item.name === sParam[i];
+                    });
+                    console.log(DM);
+                    if(DM.length > 1) return {path: path, content: ' More then 1 item with some path'};
+                    if(DM.length === 0) return {    path: path,
+                        content: 'Not found'};
+                    if(DM.length === 1){
+                        if(typeof DM[0].content === 'object'){
 
-                        if (index !== -1)
-                        {
-                            if (typeof  div === 'string')
-                                break;
-                        div = div.content[index];
+                            if(i === sParam.length-1){
+                                console.log(typeof DM[0].content);
+                                return {path: path, content: DM[0].content}};
+                            div = DM[0];
 
-                    return {
-                        path: path,
-                        content: div.content
-                    };
-                }
+                        }
+                        if(typeof DM[0].content === 'string'){
+                            return {
+                                path : path,
+                                content : DM[0].content
+                            }
+                        }
+                    }
+
             }
             }
-            return{
-                path: path,
-                content: 'Nothing'
-            };
 
 
 

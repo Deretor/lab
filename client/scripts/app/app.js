@@ -4,8 +4,8 @@
 
 (function(){
     var app = angular.module('app',[
-        'ngSanitize',
-        'adaptv.adaptStrap'
+        'ngSanitize'
+
     ]);
     app.run(['$rootScope',function($rootScope){
 
