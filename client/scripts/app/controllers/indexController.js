@@ -17,8 +17,9 @@
         //vm.bookContentList.push(indexService.getList());
         vm.bookname = vm.bookContentList[0].name;
         var Ch = indexService.getChapter();
+        vm.ch = Ch;
         console.log(vm.bookContentList,Ch);
-
+        vm.bookAuthor = vm.bookContentList.author;
         $scope.collapser = '';
         $scope.collapser = 'fa fa-plus-square-o';
     }

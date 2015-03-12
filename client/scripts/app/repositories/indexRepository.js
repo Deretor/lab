@@ -10,10 +10,12 @@
     function indexRepositoryF(){
         var book = {
             name: 'c++ prop',
+            author: 'SAMBODY',
             content: [
                 {
                     name: '1aaa',
-                    content: 'lorun;jskadn;vaksjdhbvladkjhvaksdjhvkjasdh',
+                    content: '',
+                    text:'',
                     type: 'volume'
                 },
                 {

@@ -36,11 +36,11 @@
             </div>
         </div>
     </div>
-    <div class="bookSpace">
+    <div class="bookSpace" ng-bind-html="vm.ch.content">
 
     </div>
     <footer class="footer">
-            Автор : Я бля автор.
+           {{vm.bookAuthor}}
     </footer>
 <!--core-->
     <script type="text/javascript" src="../core/script/angular.min.js"> </script>
