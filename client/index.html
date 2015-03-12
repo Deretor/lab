@@ -2,45 +2,48 @@
 <html  data-ng-app="app">
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>
+        Электронный учебнинк
+    </title>
     <!--css-->
-    <link href="content/index.css" rel="stylesheet" type="text/css">
-    <link href="../core/content/adapt-strap.css" rel="stylesheet" type="text/css">
-    <link href="../core/content/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="../core/content/bootstrap-theme.css" rel="stylesheet" type="text/css">
+    <link href="content/css/index.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/treeExpandDirective.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
 </head>
-<body ng-controller="indexController as vm">
+<body ng-controller="indexController as vm" >
     <div class="leftControlBlock">
-        <div class="mainControlBlock">
-
+        <div class="headerBlock">
+                <span>{{vm.bookname}}</span>
         </div>
         <div class="contentBlock">
             <div class="contentHead">
                 {{vm.directory}}
             </div>
             <div class="contentBody">
-                <!--<ad-tree-browser class="ad-border-default"-->
-                                 <!--tree-name="vm.bookContentList"-->
-                                 <!--row-ng-class="{added:item._selected}"-->
-                                 <!--tree-root="root"-->
-                                 <!--child-node="content"-->
-                                 <!--children-padding="15"-->
-                                 <!--bordered="true">-->
-                <!--</ad-tree-browser>-->
+               <div tree-expandable-directive="" family="vm.bookContentList" children="includes" >
+                   <div>{{child.name}}<div>
+               </div>
             </div>
         </div>
 
     </div>
-
+<!--core-->
     <script type="text/javascript" src="../core/script/angular.min.js"> </script>
     <script type="text/javascript" src="../core/script/angular-sanitize.js"> </script>
     <script type="text/javascript" src="../core/script/jquery-1.11.2.js"> </script>
     <script type="text/javascript" src="../core/script/bootstrap.min.js"> </script>
-    <!--<script type="text/javascript" src="../core/script/adapt-strap.tpl.min.js"> </script>-->
+<!--app-->
     <script type="text/javascript" src="scripts/app/app.js"> </script>
     <script type="text/javascript" src="scripts/app/config.js"> </script>
+<!--controller-->
     <script type="text/javascript" src="scripts/app/controllers/indexController.js"> </script>
+<!--service-->
     <script type="text/javascript" src="scripts/app/services/indexService.js"> </script>
+<!--repository-->
     <script type="text/javascript" src="scripts/app/repositories/indexRepository.js"> </script>
+<!--directives-->
+    <script type="text/javascript" src="scripts/app/directives/treeExpandableDirective.js"> </script>
 </body>
 </html>

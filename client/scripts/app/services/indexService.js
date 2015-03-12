@@ -34,7 +34,8 @@
 
         var getBookContentList = function(){
             var book = getBook();
-            var bookContentList = parseBookDiv(book);
+            var bookContentList=[];
+            bookContentList.push(parseBookDiv(book));
             console.info(bookContentList);
             return bookContentList;
         };
@@ -52,7 +53,7 @@
             var path = '';
             if(sParam.length > 1) {
                 for (var i = 1; i < sParam.length; i++) {
-                    path += ' -> ' + div.name;
+                    path += ' -> ' + div.name+' ';
                     console.log('aaa');
                     var DM = div.content.filter(function(item){
                         return item.name === sParam[i];
@@ -66,13 +67,13 @@
 
                             if(i === sParam.length-1){
                                 console.log(typeof DM[0].content);
-                                return {path: path, content: DM[0].content}};
+                                return {path: path +=' -> '+DM[0].name, content: DM[0].content}};
                             div = DM[0];
 
                         }
                         if(typeof DM[0].content === 'string'){
                             return {
-                                path : path,
+                                path :  path +=' -> '+DM[0].name,
                                 content : DM[0].content
                             }
                         }

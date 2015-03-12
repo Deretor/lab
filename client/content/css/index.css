@@ -1,0 +1,28 @@
+
+/*body{*/
+    /*background-color: red;*/
+/*}*/
+
+.leftControlBlock{
+    background-color: red;
+    width: 20vw;
+    height: 100vh;
+}
+
+.headerBlock{
+    background-color: #0000FF;
+    width: 100%;
+    height: 10vh;
+    font-size: 2em;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.contentHead{
+    background-color: #00A000;
+    height: 3vh;
+    width: 100%;
+    font-size: 1em;
+    text-align: center;
+}
