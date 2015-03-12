@@ -16,6 +16,7 @@
 }
 .collapser::before{
     content: "\f146";
+    cursor: pointer;
 }
 .expander{
 
@@ -29,13 +30,25 @@
 }
 .expander::before{
     content: "\f0fe";
-
+    cursor: pointer;
 }
 
 .content{
     display: inline-block;
-    /*margin-left: 2%;*/
 }
+.expand{
+    cursor: pointer;
+}
+
 .unexpand{
-    background-color: #0000FF;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+.unexpand::before{
+    content: "\f096";
 }

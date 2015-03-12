@@ -28,7 +28,8 @@
             template:   '<div class="container" data-ng-repeat="child in family | filter: search2">' +
                             '<div data-ng-class="{collapser:isExpand[$index], expander: !isExpand[$index]}"' +
                             'data-ng-init="onInit($index, family.length)" data-ng-click="onExpandClick($index)" data-ng-if="child[children].length > 0">&nbsp</div>' +
-                            '<div  class = "content" data-ng-class="{unexpund: function(){return child[children].length == 0}}" data-ng-transclude></div>' +
+                            '<div class="unexpand"  data-ng-if="child[children].length == 0">&nbsp</div>'+
+                            '<div  class = "content "    data-ng-transclude></div>' +
                             '<tree-expandable-directive data-ng-if="checkExpand($index)" data-family="child[children]" data-children="{{children}}"> ' +
                                 '<div ng-transclude></div>' +
                             '</tree-directive>' +
@@ -70,16 +71,11 @@
 
                         /**@expose*/
                         scope.isExpand = {};
-                        scope.hasChild = {};
-                        scope.checkChild = function(index){
-                          for(var item in scope.family){
-
-                          }
-                        };
                         console.log(scope.family,scope.children);
 
                         /**@expose*/
                         scope.onInit = function (index, length) {
+
                             if (length > 1) scope.isExpand[index] = false;
                             if (length <= 1) {scope.isExpand[index] = true;
                                 if (scope.handler)
