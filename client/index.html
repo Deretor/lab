@@ -33,10 +33,11 @@
                <div tree-expandable-directive="" family="vm.bookContentList" children="includes" >
                   <a href="#">{{child.name}}</a>
                </div>
+
             </div>
         </div>
     </div>
-    <div class="bookSpace">
+    <div class="bookSpace" ng-bind-html="vm.Ch.content.text">
 
     </div>
     <footer class="footer">

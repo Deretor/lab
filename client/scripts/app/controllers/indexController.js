@@ -16,8 +16,8 @@
         //vm.bookContentList=[];
         //vm.bookContentList.push(indexService.getList());
         vm.bookname = vm.bookContentList[0].name;
-        var Ch = indexService.getChapter();
-        console.log(vm.bookContentList,Ch);
+        vm.Ch = indexService.getChapter();
+        console.log(vm.bookContentList,vm.Ch);
 
         $scope.collapser = '';
         $scope.collapser = 'fa fa-plus-square-o';

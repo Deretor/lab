@@ -15,28 +15,35 @@
            return getingBook;
        };
         // в клиент-серверном приложении - это логика сервера;
-        var parseBookDiv = function(div){
+        var parseBookDiv = function(div,path){
             var currentListItem = {};
                 if(typeof div.content == "object"){
                     currentListItem.name = div.name;
+                    currentListItem.path = path + '/' +currentListItem.name;
+                    if(div.author)currentListItem.author = div.author;
+                    if(div.publisher)currentListItem.author = div.publisher;
                     if(!currentListItem.includes) currentListItem.includes = [];
                     for(var i=0; i < div.content.length; i++){
-                        currentListItem.includes.push(parseBookDiv(div.content[i]));
+                        currentListItem.includes.push(parseBookDiv(div.content[i],currentListItem.path));
                     }
                 }
                 if(typeof div.content === "string"){
                     currentListItem.name = div.name;
                     currentListItem.includes = [];
+                    currentListItem.path = path + '/'+ currentListItem.name;
+                    if(div.author)currentListItem.author = div.author;
+                    if(div.publisher)currentListItem.author = div.publisher;
                 }
             return currentListItem;
         };
 
 
         var getBookContentList = function(){
+            var path = '';
             var book = getBook();
             var bookContentList=[];
-            bookContentList.push(parseBookDiv(book));
-            console.info(bookContentList);
+            bookContentList.push(parseBookDiv(book,path));
+            console.info('book parsed',bookContentList);
             return bookContentList;
         };
 
@@ -56,25 +63,24 @@
                     path += ' -> ' + div.name+' ';
                     console.log('aaa');
                     var DM = div.content.filter(function(item){
-                        return item.name === sParam[i];
+                        return item.index === sParam[i];
                     });
                     console.log(DM);
-                    if(DM.length > 1) return {path: path, content: ' More then 1 item with some path'};
+                    if(DM.length > 1) return {path: path, content: {type: 'Error',text:' More then 1 item with some path'}};
                     if(DM.length === 0) return {    path: path,
                         content: 'Not found'};
                     if(DM.length === 1){
-                        if(typeof DM[0].content === 'object'){
-
-                            if(i === sParam.length-1){
-                                console.log(typeof DM[0].content);
-                                return {path: path +=' -> '+DM[0].name, content: DM[0].content}};
-                            div = DM[0];
-
+                        if(i === sParam.length-1){
+                            console.log(typeof DM[0].content);
+                            return {path: path +=' -> '+DM[0].name, content:{ text: DM[0].text}}
                         }
-                        if(typeof DM[0].content === 'string'){
+                        if(typeof DM[0].content === 'object'){
+                            div = DM[0];
+                        }
+                        if(typeof DM[0].content !== 'object'){
                             return {
                                 path :  path +=' -> '+DM[0].name,
-                                content : DM[0].content
+                                content : {type: 'Error',text:' Not found'}
                             }
                         }
                     }
