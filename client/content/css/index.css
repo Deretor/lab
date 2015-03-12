@@ -1,28 +1,57 @@
 
-/*body{*/
-    /*background-color: red;*/
-/*}*/
+body{
+    overflow: hidden;
+
+}
 
 .leftControlBlock{
     background-color: red;
     width: 20vw;
-    height: 100vh;
+    height: 79vh;
+    float: left;
+
 }
 
-.headerBlock{
-    background-color: #0000FF;
+
+
+.contentHead{
+    background-color: #00A000;
+    height: 3%;
     width: 100%;
+    font-size: 1em;
+    text-align: center;
+}
+.headerBlock{
+    display: inline-block;
+    background-color: #0000FF;
+    clear: left;
+    width: 20vw !important;
     height: 10vh;
     font-size: 2em;
     text-align: center;
     vertical-align: middle;
     overflow: hidden;
 }
-
-.contentHead{
+.header{
+    width: 100vw;
+    float: left;
     background-color: #00A000;
-    height: 3vh;
-    width: 100%;
-    font-size: 1em;
-    text-align: center;
+    height: 10vh
+}
+.bookName{
+    display: inline-block;
+    clear: right;
+    width: 79vw;
+}
+.footer{
+    background-color: #31b0d5;
+    height: 10vh;
+    width: 100vw;
+    float: left;
+}
+.bookSpace{
+    background-color: #ffff00;
+    width: 80vw;
+    height: 79vh;
+    float: right;
 }

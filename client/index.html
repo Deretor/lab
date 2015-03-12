@@ -13,22 +13,35 @@
     <link href="../core/content/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="indexController as vm" >
-    <div class="leftControlBlock">
+
+    <header class="header">
         <div class="headerBlock">
-                <span>{{vm.bookname}}</span>
+            <span>Электронный учебник</span>
         </div>
+        <div class="bookName">
+            <span>{{vm.bookname}}</span>
+        </div>
+    </header>
+
+    <div class="leftControlBlock">
+
         <div class="contentBlock">
             <div class="contentHead">
                 {{vm.directory}}
             </div>
             <div class="contentBody">
                <div tree-expandable-directive="" family="vm.bookContentList" children="includes" >
-                   <div>{{child.name}}<div>
+                  <a href="#">{{child.name}}</a>
                </div>
             </div>
         </div>
+    </div>
+    <div class="bookSpace">
 
     </div>
+    <footer class="footer">
+            Автор : Я бля автор.
+    </footer>
 <!--core-->
     <script type="text/javascript" src="../core/script/angular.min.js"> </script>
     <script type="text/javascript" src="../core/script/angular-sanitize.js"> </script>
