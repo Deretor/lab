@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<H2 CLASS="western">8.2.3. Использование свойств
+    объекта в качестве аргументов
+</H2>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Когда функция
+    имеет более трех аргументов, становится
+    трудно запоминать правильный порядок
+    их следования. Чтобы предотвратить
+    ошибки и избавить программиста от
+    необходимости заглядывать в справочное
+    руководство всякий раз, когда он
+    намеревается вставить в программу вызов
+    такой функции, можно предусмотреть
+    возможность передачи аргументов в виде
+    пар «имя–значение» в произвольном
+    порядке. Чтобы реализовать такую
+    возможность, при определении функции
+    следует учесть передачу объекта в
+    качестве единственного аргумента.
+    Благодаря такому стилю, пользователи
+    функции смогут передавать функции
+    литерал объекта, в котором будут
+    определяться необходимые пары
+    «имя–значение». В следующем фрагменте
+    приводится пример такой функции, а также
+    демонстрируется возможность определения
+    значений по умолчанию для опущенных
+    аргументов:
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Скопировать length элементов из массива
+    from в массив to. </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Копирование начинается с элемента
+    from_start в массиве from </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>// и
+    выполняется в элементы, начиная с
+    to_start в массиве to. </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Запомнить порядок следования аргументов
+    такой функции довольно сложно. </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    arraycopy(/* array */ from, /* index */ from_start, /* array */ to,
+    /* index */ to_start, /* integer */ length)</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>{ </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    здесь находится реализация функции</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>}</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>//
+    Эта версия функции чуть менее эффективная,
+    но не требует</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>//
+    запоминать порядок следования аргументов,
+    а аргументы from_start</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>// и
+    to_start по умолчанию принимают значение
+    0.</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>function
+    easycopy(args) {</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>arraycopy(args.from,
+    args.from_start || 0, </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Обратите внимание, как назначаются</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>//
+    значения по умолчанию </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>args.to,
+    args.to_start || 0, args.length);</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>} </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Далее следует пример вызова функции
+    easycopy(): </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>var
+    a = [1,2,3,4];</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><SPAN LANG="en-US"><I>var
+    b = new Array(4);</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><SPAN LANG="en-US"><I>easycopy({from:
+    a, to: b, length: 4}); </I></SPAN></FONT>
+</P>
+
+</body>
+</html>

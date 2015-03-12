@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<H2 CLASS="western">8.2.1. Необязательные аргументы
+</H2>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Когда функция
+    вызывается с меньшим количеством
+    аргументов, чем описывается в определении,
+    недостающие аргументы получают значение
+    undefined. Иногда бывает удобным учесть
+    необязательность некоторых аргументов
+    – тех, которые могут быть опущены при
+    вызове функции. В этом случае желательно
+    предусмотреть возможность присваивания
+    по умолчанию достаточно разумных
+    значений аргументам, которые были
+    опущены (или переданы со значением
+    null). Например:
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Добавить в массив a перечислимые имена
+    свойств объекта o и вернуть массив a.</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>//
+    Если массив a не указан или равен null,
+    создать и вернуть новый массив a </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    copyPropertyNamesToArray(o, /* </I></SPAN></FONT><FONT SIZE=2><I>необязательный</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>
+    */ a) { </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>if
+    (!a) a = []; // Если массив не определен или
+    получено </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    значение null, создать новый пустой массив
+    a </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>for(var
+    property in o) </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>a.push(property);
+</I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>return
+    a; } </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Когда функция
+    определена таким образом, появляются
+    более широкие возмож ности обращения
+    к ней:
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Получить имена свойств объектов o и p</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>var a
+    = copyPropertyNamesToArray(o); </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Получить свойства объекта o </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>// в
+    виде нового массива </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>copyPropertyNamesToArray(p,a);
+</I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    добавить к массиву свойства объекта p
+    Вместо инструкции if в первой строке
+    этой функции можно использовать оператор
+    || следующим образом: </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>a = a
+    || []; </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Оператор ||
+    возвращает первый аргумент, если он
+    равен true или преобразуется в логическое
+    значение true. В противном случае
+    возвращается второй аргумент. В данном
+    случае он вернет a, если переменная a
+    определена и не содержит значение null
+    даже в том случае, если a – это пустой
+    массив. В противном случае он вернет
+    новый пустой массив.
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><B>Обратите
+    внимание</B>: при объявлении функций
+    необязательные аргументы должны
+    завершать список аргументов, чтобы их
+    можно было опустить. Программист, который
+    будет писать обращение к вашей функции,
+    не сможет передать второй аргумент и
+    при этом опустить первый. В этом случае
+    он вынужден будет явно передать в первом
+    аргументе значение undefined или null.
+</P>
+</body>
+</html>

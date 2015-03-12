@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<H2 CLASS="western">8.1.1. Вложенные функции
+</H2>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">В JavaScript
+    допускается вложение определений
+    функций в другие функции.
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Например<SPAN LANG="en-US">:
+</SPAN>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    hypotenuse(a, b) {</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><SPAN LANG="en-US"><I>function
+    square(x) { return x*x; } </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>return
+    Math.sqrt(square(a) + square(b)); </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2>} </FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Вложенные
+    функции могут определяться только в
+    коде функций верхнего уровня. Это значит,
+    что определения функций не могут
+    находиться, например, внутри циклов или
+    условных инструкций.</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><B>Обратите
+    внимание</B>: эти ограничения распространяются
+    только на объявления функций с помощью
+    инструкции function. Функциональные литералы
+    (которые описываются в следующем разделе)
+    могут присутствовать внутри любых
+    выражений.
+</P>
+</body>
+</html>

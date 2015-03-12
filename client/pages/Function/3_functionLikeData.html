@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<H1 CLASS="western">8.3. Функции как данные</H1>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> Самые важные
+    особенности функций заключаются в том,
+    что они могут определяться и вызываться,
+    что было показано в предыдущем разделе.
+    Определение и вызов функций – это
+    синтаксические средства JavaScript и
+    большинства других языков программирования.
+    Однако в JavaScript функции – это не только
+    синтаксические конструкции, но и данные,
+    а это означает, что они могут присваиваться
+    переменным, храниться в свойствах
+    объектов или элементах массивов,
+    передаваться как аргументы функциями
+    и т. д.</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Чтобы понять,
+    как в JavaScript функции могут быть одновременно
+    синтаксическими конструкциями и данными,
+    рассмотрим следующее определение
+    функции:
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    square(x) { </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>return
+    x*x; </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>} </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Это определение
+    создает новый объект функции и присваивает
+    его переменной square. Имя функции
+    действительно нематериально – это
+    просто имя переменной, содержащей
+    функцию. Функция может быть присвоена
+    другой переменной, и при этом работать
+    так же, как и раньше:</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><SPAN LANG="en-US"><I>var
+    a = square(4); // a </I></SPAN></FONT><FONT SIZE=2><I>содержит</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>
+</I></SPAN></FONT><FONT SIZE=2><I>число</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>
+    16</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>var b
+    = square; // b теперь ссылается на ту же
+    функцию, что и square</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>var c
+    = b(5); // c содержит число 25 </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Функции могут
+    быть также присвоены не только глобальным
+    переменным, но и свойствам объектов. В
+    этом случае их называют методами:</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>var o
+    = new Object; </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>o.square
+    = function(x) { return x*x; }; // функциональный
+    литерал </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>y
+    = o.square(16); // y </I></SPAN></FONT><FONT SIZE=2><I>равно</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>
+    256</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> У функций
+    даже не обязательно должны быть имена,
+    например в случае присваивании их
+    элементам массива:</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>var a
+    = new Array(3); </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>a[0]
+    = function(x) { return x*x; } </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>a[1]
+    = 20; </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>a[2]
+    = a[0](a[1]); // a[2] </I></SPAN></FONT><FONT SIZE=2><I>содержит</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>
+    400 </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Синтаксис
+    вызова функции в последнем примере
+    выглядит необычно, однако это вполне
+    допустимый вариант применения оператора
+    () в JavaScript! В примере 8.2 подробно показано,
+    что можно делать, когда функции выступают
+    в качестве данных. Этот пример
+    демонстрирует, каким образом функции
+    могут передаваться другим функциям.
+    Хотя пример может показаться вам
+    несколько сложным, комментарии объясняют,
+    что происходит, и он вполне достоин
+    тщательного изучения.
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>Пример
+    8.2. Использование функций как данных </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Здесь определяются несколько простых
+    функций</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><SPAN LANG="en-US"><I>function
+    add(x,y) { return x + y; } </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    subtract(x,y) { return x - y; } </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    multiply(x,y) { return x * y; } </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    divide(x,y) { return x / y; } </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>// Эта
+    функция принимает одну из вышеприведенных
+    функций </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>// в
+    качестве аргумента и вызывает ее для
+    двух операндов </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    operate(operator, operand1, operand2) { </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>return
+    operator(operand1, operand2); </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>} </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>// Вот
+    так можно вызвать эту функцию для
+    вычисления значения выражения (2+3) +
+    (4*5): </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>var
+    i = operate(add, operate(add, 2, 3), operate(multiply, 4, 5));</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>//
+    Ради примера, мы реализуем эти функции
+    снова, на этот раз с помощью</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>//
+    функциональных литералов внутри литерала
+    объекта. </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>var
+    operators = {</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in">
+    <FONT SIZE=2><SPAN LANG="en-US"><I>add: function(x,y) { return x+y;
+        }, </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in">
+    <FONT SIZE=2><SPAN LANG="en-US"><I>subtract: function(x,y) { return
+        xy; },</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in">
+    <FONT SIZE=2><SPAN LANG="en-US"><I>multiply: function(x,y) { return
+        x*y; }, </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>divide:
+    function(x,y) { return x/y; }, </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>pow</I></SPAN></FONT><FONT SIZE=2><I>:
+</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>Math</I></SPAN></FONT><FONT SIZE=2><I>.</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>pow</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in">
+    <FONT SIZE=2><I>// Для предопределенных функций
+        это тоже работает </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in"><FONT SIZE=2><I>};
+</I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>// Эта
+    функция принимает имя оператора,
+    отыскивает оператор в объекте, </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>// а
+    затем вызывает его для переданных
+    операндов. Обратите внимание </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>// на
+    синтаксис вызова функции оператора. </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    operate2(op_name, operand1, operand2) {</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>if
+    (typeof operators[op_name] == &quot;function&quot;) </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 0.49in; text-indent: 0.49in; margin-bottom: 0.11in">
+    <FONT SIZE=2><SPAN LANG="en-US"><I>return
+        operators[op_name](operand1, operand2);</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in">
+    <FONT SIZE=2><SPAN LANG="en-US"><I>else</I></SPAN></FONT><FONT SIZE=2><I>
+</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>throw</I></SPAN></FONT><FONT SIZE=2><I>
+    &quot;неизвестный оператор&quot;;</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in">
+    <FONT SIZE=2><I>}</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in">
+    <FONT SIZE=2><I>// Вот так мы можем вызвать эту
+        функцию для вычисления значения  (&quot;</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>hello</I></SPAN></FONT><FONT SIZE=2><I>&quot;
+    + &quot; &quot; + &quot;</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>world</I></SPAN></FONT><FONT SIZE=2><I>&quot;):
+</I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>var
+    j = operate2(&quot;add&quot;, &quot;hello&quot;, operate2(&quot;add&quot;,
+    &quot; &quot;, &quot;world&quot;)) </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Используем предопределенную функцию </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>Math.pow():
+    var k = operate2(&quot;pow&quot;, 10, 2)</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0.11in">
+    Если предыдущий пример не убедил вас в
+    удобстве передачи функций в качестве
+    аргументов другим функциям и других
+    способов использования функций как
+    значений, обратите внимание на функцию
+    Array.sort(). Она сортирует элементы массива.
+    Существует много возможных порядков
+    сортировки (числовой, алфавитный, по
+    датам, по возрастанию, по убыванию и т.
+    д.), поэтому функция sort() принимает в
+    качестве необязательного аргумента
+    другую функцию, которая сообщает о том,
+    как выполнять сортировку. Эта функция
+    делает простую работу – получает два
+    элемента массива, сравнивает их, а затем
+    возвращает результат, указывающий,
+    какой из элементов должен быть первым.
+    Этот аргумент функции делает метод
+    Array.sort() совершенно универсальным и
+    бесконечно гибким – он может сортировать
+    любой тип данных в любом мыслимом
+    порядке!
+</P>
+</body>
+</html>

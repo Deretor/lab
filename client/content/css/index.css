@@ -42,12 +42,15 @@ body{
     display: inline-block;
     clear: right;
     width: 79vw;
+    text-align: center;
+    font-size: 5vh;
 }
 .footer{
     background-color: #31b0d5;
     height: 10vh;
     width: 100vw;
     float: left;
+    text-align: center;
 }
 .bookSpace{
     background-color: #ffff00;
