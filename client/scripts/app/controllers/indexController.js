@@ -19,7 +19,8 @@
         var Ch = indexService.getChapter();
         console.log(vm.bookContentList,Ch);
 
-        //$scope.collapser = 'fa fa-'
+        $scope.collapser = '';
+        $scope.collapser = 'fa fa-plus-square-o';
     }
 
 })();
