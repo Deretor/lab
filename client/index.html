@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html  data-ng-app="app">
-<head lang="en">
+<head lang="ru">
     <meta charset="UTF-8">
     <title>
         Электронный учебнинк
@@ -16,7 +16,7 @@
 
     <header class="header">
         <div class="headerBlock">
-            <span>Электронный учебник</span>
+
         </div>
         <div class="bookName">
             <span>{{vm.bookname}}</span>
@@ -30,7 +30,7 @@
                 {{vm.directory}}
             </div>
             <div class="contentBody">
-               <div tree-expandable-directive="" family="vm.bookContentList" children="includes" >
+               <div tree-expandable-directive="" family="vm.bookContentList" children="includes" class="expand1">
                   <a href="#" data-ng-if = "child.type !== 'nonText' " data-ng-click = "vm.redirectClick(child.path)">{{child.name}}</a>
                   <span data-ng-if = "child.type === 'nonText' ">{{child.name}}</span>
                </div>

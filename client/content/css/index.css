@@ -1,11 +1,15 @@
 
 body{
     overflow: hidden;
+    background-color: #6F6C6A !important;
+    /*background-color: red;*/
 
 }
 
 .leftControlBlock{
-    background-color: red;
+    /*background-color: #CDC3C0;*/
+    background-color: #c9bfbc;
+
     width: 20vw;
     height: 79vh;
     float: left;
@@ -15,7 +19,7 @@ body{
 
 
 .contentHead{
-    background-color: #00A000;
+    background-color: #c9bfbc;
     height: 3%;
     width: 100%;
     font-size: 1em;
@@ -23,7 +27,7 @@ body{
 }
 .headerBlock{
     display: inline-block;
-    background-color: #0000FF;
+    /*background-color: #0000FF;*/
     clear: left;
     width: 20vw !important;
     height: 10vh;
@@ -35,7 +39,7 @@ body{
 .header{
     width: 100vw;
     float: left;
-    background-color: #00A000;
+    background-color: rgba(199, 189, 186, 0.100);
     height: 10vh
 }
 .bookName{
@@ -46,24 +50,33 @@ body{
     font-size: 5vh;
 }
 .footer{
-    background-color: #31b0d5;
+    background-color: black;
     height: 10vh;
+    color: #f5f5f5;
     width: 100vw;
     float: left;
     text-align: center;
 }
 .bookSpace{
-    background-color: #ffff00;
+    /*background-color: rgba(199, 189, 186, 0.100);;*/
+    background-color: #CDC3C0;
     width: 80vw;
     height: 79vh;
     float: right;
 }
 .bookText{
-    background-color: #ffff00;
+
     margin-left: 1vw ;
     width: 79vw;
     height: 79vh;
     float: right;
     overflow: auto;
     padding-right: 1vw;
+    background-color:#CDC3C0 ;
+}
+.contentBody{
+    overflow: auto;
+    width: 100%;
+    height:  76vh;
+
 }
