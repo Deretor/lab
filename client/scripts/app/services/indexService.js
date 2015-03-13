@@ -74,15 +74,22 @@
                         return item.name === sParam[i];
                     });
                     console.log(DM);
-                    if(DM.length > 1) return {path: path, content: {type: 'Error',text:' More then 1 item with some path'}};
+                    if(DM.length > 1) return {path: path, content: {type: 'html/text',text:' More then 1 item with some path'}};
                     if(DM.length === 0) return {    path: path,
-                        content: 'Not found',
-                    dm: DM
+                        content: {
+                            text: 'Not found',
+                            type: 'html/text',
+                            dm: DM
+                        }
                     };
                     if(DM.length === 1){
                         if(i === sParam.length-1){
                             console.log(typeof DM[0].content);
-                            return {path: path +=' -> '+DM[0].name, content:{ text: DM[0].text}}
+                            return {path: path +=' -> '+DM[0].name, content:{
+                                text: DM[0].text || '',
+                                templateUrl: DM[0].templateUrl || '',
+                                type: DM[0].type
+                            }}
                         }
                         if(typeof DM[0].content === 'object'){
                             div = DM[0];
@@ -90,7 +97,7 @@
                         if(typeof DM[0].content !== 'object'){
                             return {
                                 path :  path +=' -> '+DM[0].name,
-                                content : {type: 'Error',text:' Not found'}
+                                content : {type: 'html/text',text:' Not found'}
                             }
                         }
                     }
@@ -102,7 +109,9 @@
                 if(sParam[0] == div.name){
                     return {path:  div.name,
                         content :{
-                            text: div.text || 'Выберите главу'
+                            text: div.text || 'Выберите главу',
+                            type: div.type || 'html/text',
+                            templateUrl: div.templateUrl
                         }
                     }
                 }

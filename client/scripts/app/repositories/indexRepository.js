@@ -17,6 +17,7 @@
             'Пятое издание бестселлера «JavaScript. Подробное руководство» полностью обновлено.' +
             'Часть I знакомит с основами JavaScript'+
             '</p>',
+            type: 'html/text',
             content: [
                 {
                     name: 'Часть I. Основы JavaScript',
@@ -26,39 +27,92 @@
                         {
                             name: 'Функции',
                             index: 0,
-                            text: '<H1>Функции</H1>' +
-                            '<p>Функция – это блок программного кода на языке JavaScript, который определяется один раз и может вызываться многократно. Функции могут иметь пара'+
-                        'метры, или аргументы, – локальные переменные, значения которых определя'+
-                        'ются при вызове функции. Функции часто используют свои аргументы для вы'+
-                        'числения возвращаемого значения, которое является значением выражения вы'+
-                        'зова функции. Если функция вызывается в контексте объекта, она называется '+
-                        'методом, а сам объект передается ей в виде неявного аргумента. Вероятно, вы '+
-        'уже знакомы с концепцией функции, если встречались с такими понятиями,'+
-            'как подпрограмма и процедура.. </p>'+
-                            '<p>В этой главе мы сосредоточимся на определении и вызове собственных JavaScript функций. Важно помнить, что JavaScript поддерживает некоторое количество встроенных функций, таких как eval() и parseInt() или метод sort() класса'+
-                            'Array. В клиентском языке JavaScript определяются другие функции, например document.write() и alert(). Встроенные JavaScriptфункции применяются'+
-                            'точно так же, как и функции, определенные пользователем.</p>',
-                            type: 'volume',
+                            text: '2',
+                            templateUrl: 'pages/function.html',
+                            type: 'html/urlTemplate',
                             content: [
                                 {
-                                 name: '',
+                                 name: 'Вызов и определение функции',
                                  text: '',
-                                 type: '',
-
-                                 content:[
-
+                                 type: 'html/urlTemplate',
+                                 templateUrl: 'pages/Function/1_functionInitAndCall.html',
+                                 content:[{
+                                     name: 'Вложенные функции',
+                                        text: '',
+                                        type: 'html/urlTemplate',
+                                        templateUrl: 'pages/Function/functionInitAndCall/1_IncludedFunction.html',
+                                        content:[
+                                    ] },
+                                     {
+                                         name: 'Литералы функций',
+                                         text: '',
+                                         type: 'html/urlTemplate',
+                                         templateUrl: 'pages/Function/functionInitAndCall/2_functonalLiteral.html',
+                                         content:[
+                                         ] },
+                                     {
+                                         name: 'Вопросы для самопроверки',
+                                         text: '',
+                                         type: 'html/urlTemplate',
+                                         templateUrl: 'pages/Function/functionInitAndCall/1q_Questions.html',
+                                         content:[
+                                         ] }
                                  ]
-
+                                },
+                                {
+                                    name: 'Аргументы функции',
+                                    text: '',
+                                    type: 'html/urlTemplate',
+                                    templateUrl: 'pages/Function/2_functionArguments.html',
+                                    content:[
+                                        {
+                                            name: 'Необязательные аргументы',
+                                            text: '',
+                                            type: 'html/urlTemplate',
+                                            templateUrl: 'pages/Function/functionArguments/1_optionaArguments.html',
+                                            content:[
+                                            ] },
+                                        {
+                                            name: 'Список аргументов',
+                                            text: '',
+                                            type: 'html/urlTemplate',
+                                            templateUrl: 'pages/Function/functionArguments/2_argumentsList.html',
+                                            content:[
+                                            ] },
+                                        {
+                                            name: 'Свойство как аргумент',
+                                            text: '',
+                                            type: 'html/urlTemplate',
+                                            templateUrl: 'pages/Function/functionArguments/3_propertyLikeArgument.html',
+                                            content:[
+                                            ] },
+                                        {
+                                            name: 'Вопросы для самопроверки',
+                                            text: '',
+                                            type: 'html/urlTemplate',
+                                            templateUrl: 'pages/Function/functionArguments/2q_Questions.html',
+                                            content:[
+                                            ] }
+                                    ]
+                                },
+                                {
+                                    name: 'Функции как данные',
+                                    text: '',
+                                    type: 'html/urlTemplate',
+                                    templateUrl: 'pages/Function/3_functionLikeData.html',
+                                    content:[
+                                        {
+                                            name: 'Вопросы для самопроверки',
+                                            text: '',
+                                            type: 'html/urlTemplate',
+                                            templateUrl: 'pages/Function/FunctionLikeData/3q_Questions.html',
+                                            content:[
+                                            ] }
+                                    ]
                                 }
                             ]
                         }
                     ]
-                },
-                {
-                    name: '2aaa',
-                    content: [
-                    ],
-                    type: 'volume'
                 }
             ]
         };

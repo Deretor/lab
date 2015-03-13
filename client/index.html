@@ -37,10 +37,11 @@
             </div>
         </div>
     </div>
-    <div class="bookSpace"  data-ng-if="vm.ch.content.type == 'html/text'" ng-bind-html=" vm.ch.content.text">
+    <div class="bookSpace"  >
+        <div class="bookText" data-ng-if="vm.ch.content.type == 'html/text' " ng-bind-html=" vm.ch.content.text"></div>
+        <div class="bookText" data-ng-if="vm.ch.content.type == 'html/urlTemplate' " ng-include = "vm.ch.content.templateUrl"></div>
     </div>
-    <div class="bookSpace"  data-ng-if="vm.ch.content.type == 'html/urlTenplate'" ng-include = 'vm.ch.content.tempUrl' >
-    </div>
+
     <footer class="footer">
            <span>Автор : {{vm.bookAuthor}}</span><br/>
            <span>Издатель : <span ng-bind-html="vm.bookPublisher"></span></span>

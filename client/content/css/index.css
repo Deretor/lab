@@ -58,3 +58,12 @@ body{
     height: 79vh;
     float: right;
 }
+.bookText{
+    background-color: #ffff00;
+    margin-left: 1vw ;
+    width: 79vw;
+    height: 79vh;
+    float: right;
+    overflow: auto;
+    padding-right: 1vw;
+}
