@@ -37,8 +37,9 @@
             </div>
         </div>
     </div>
-    <div class="bookSpace" ng-bind-html=" vm.ch.content.text">
-
+    <div class="bookSpace"  data-ng-if="vm.ch.content.type == 'html/text'" ng-bind-html=" vm.ch.content.text">
+    </div>
+    <div class="bookSpace"  data-ng-if="vm.ch.content.type == 'html/urlTenplate'" ng-include = 'vm.ch.content.tempUrl' >
     </div>
     <footer class="footer">
            <span>Автор : {{vm.bookAuthor}}</span><br/>

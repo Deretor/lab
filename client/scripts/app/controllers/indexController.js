@@ -29,6 +29,8 @@
             console.log('p',path);
             vm.ch = indexService.getChapter(path);
             console.log('returned',vm.ch);
+            vm.ch.content.tempUrl = 'pages/function.html';
+            vm.ch.content.type = 'html/text';
         }
     }
 
