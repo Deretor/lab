@@ -84,3 +84,6 @@ body{
 i{
     padding-left: 3px;
 }
+pre {
+    background-color: inherit !important;
+}

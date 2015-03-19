@@ -1,3 +1,37 @@
 <div>
+    <h1>Тест по теме "функции"</h1>
+    <hr>
+    Вопрос 1. Выберите синтаксически корректную JavaScript команду для вызова функции "callFunction()".
+        function callFunction()
+        callFunction()
+        new callFunction()
+    <br/>
+    Вопрос 2. Выберите синтаксически корректную JavaScript команду для объявления функции "callFunction()".
+        function callFunction(){};
+        callFunction(){}
+        new cllFunction(){}
+    <br/>
+    Вопрос 3. В результате выполнения кода <i><pre>
+    var ad = { abil : 'pls', a:function(a+b), b: 17};
+     var error = function(){
+       console.log('ERROR');
+     };
 
+        function callFunction(obj,error){
+          a=obj.a;
+          b=obj.b;
+          abil=obj.abil;
+            switch(abil){
+                case 'plus' : return a+b;
+                case 'minus' : return a>b? a-b : b-a;
+                case 'multiplication' : return a*b;
+                case 'div' : return a/b;
+                default : {error(); return 0;}
+            }
+        }
+    console.log(callFunction(ad,error));
+</pre></i> в произойдет".
+    30
+    'ERROR' 0
+    произойдет ошибка
 </div>
