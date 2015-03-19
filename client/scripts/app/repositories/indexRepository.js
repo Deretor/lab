@@ -111,7 +111,16 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            name: 'Тест на усвоение темы',
+                            text: '',
+                            type: 'html/urlTemplate',
+                            templateUrl: 'pages/TestPage.html',
+                            content:[
+                            ]
                         }
+
                     ]
                 }
             ]
