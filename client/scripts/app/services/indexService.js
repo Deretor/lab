@@ -118,9 +118,17 @@
             }
 
         };
+
+        var getQuestions = function(){
+            console.info('222');
+            var book = getBook();
+            console.info('333');
+            return book.questions;
+        };
         return{
             getChapter: getBookDiv,
-            getList: getBookContentList
+            getList: getBookContentList,
+            getQuestions : getQuestions
         }
     }
 

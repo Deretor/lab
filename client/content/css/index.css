@@ -87,3 +87,15 @@ i{
 pre {
     background-color: inherit !important;
 }
+
+div{
+    border-color: white;
+}
+
+/*.open{*/
+    /*display : block;*/
+/*}*/
+
+/*.close{*/
+    /*display : none;*/
+/*}*/

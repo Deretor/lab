@@ -11,7 +11,7 @@
         var vm=this;
         vm.new11 = 'sdfjkn;vajs;djav';
         vm.directory = 'Содержание';
-
+        vm.questionTemplate = [];
         vm.bookContentList = indexService.getList();
         //vm.bookContentList=[];
         //vm.bookContentList.push(indexService.getList());
@@ -32,7 +32,44 @@
             //vm.ch.content.templateUrl = 'pages/function.html';
             //vm.ch.content.type = 'html/text';
             console.log(vm.ch.content);
+        };
+
+        vm.form = {};
+
+        function getQuestions(){
+            //console.info('123');
+            vm.questionTemplate = indexService.getQuestions();
+            //console.info('kttttttt ',vm.questionTemplate)
         }
+        getQuestions();
+
+        vm.act=function(){
+            console.log(arguments);
+        };
+        vm.right = function(res,id){
+          console.log(arguments);
+            console.log($('#collapse'+id+'right'));
+          if(res == vm.form[id]){
+              $('#collapse'+id+'right').css('height', 0);
+            $('#collapse'+id+'right').animate({
+                height : '3%'
+            },300);
+            $('#help'+id+'help').css({'height' : 0});
+            return true;
+          }
+
+            $('#collapse'+id+'help').css('height' , 0);
+            $('#collapse'+id+'help').animate({
+                height : '3%'
+            },300);
+            $('#help'+id+'right').css('height', 0);
+            return false;
+            //console.log($('#form'+id+'>input').type());
+        };
+        vm.arr = function(){console.log(vm.form)};
+        console.log(vm.form);
+
+
     }
 
 })();

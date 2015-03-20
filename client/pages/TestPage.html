@@ -1,37 +1,83 @@
-<div>
-    <h1>Тест по теме "функции"</h1>
-    <hr>
-    Вопрос 1. Выберите синтаксически корректную JavaScript команду для вызова функции "callFunction()".
-        function callFunction()
-        callFunction()
-        new callFunction()
-    <br/>
-    Вопрос 2. Выберите синтаксически корректную JavaScript команду для объявления функции "callFunction()".
-        function callFunction(){};
-        callFunction(){}
-        new cllFunction(){}
-    <br/>
-    Вопрос 3. В результате выполнения кода <i><pre>
-    var ad = { abil : 'pls', a:function(a+b), b: 17};
-     var error = function(){
-       console.log('ERROR');
-     };
+<div >
+    <h1>Тест </h1>
+    <!--{{//vm.new11}}-->
+<!--{{new11}}-->
+    <div ng-repeat = "item in vm.questionTemplate"  >
+        <div style="border : 1px; border-style : solid; border-color:#ffffff; border-radius: 5px; padding : 1%;">
+            <span> Вопорос {{$index + 1}} : {{item.question}}</span>
+        <form  id = "form{{$index}}" ng-submit="vm.right(item.right,$index)"  >
+            <input type="radio"  name="quest{{$index}}" value="1" ng-model = "vm.form[$index]"/>{{item.variants[0]}}<br/>
+            <input type="radio" name="quest{{$index}}"  value="2" ng-model = "vm.form[$index]"/>{{item.variants[1]}}<br/>
+            <input type="radio" name="quest{{$index}}"  value="3" ng-model = "vm.form[$index]"/>{{item.variants[2]}}<br/>
+            <input type="submit" value = "Проверить"></button>
+        </form>
+            </div>
+        <div id="collapse{{$index}}right" style=" border : 1px; height: 0; border-color:#ffffff ; border-style : solid; padding : 1%; border-top : none; border-radius: 5px;">
+           <span style="color: green; ">Правильно</span>
+            <br/>
+        </div>
+        <div id="collapse{{$index}}help" style=" height: 0; border : 1px; border-color:#ffffff; border-style : solid; padding : 1%; border-top : none; border-radius: 5px;">
+            <span style="color: red; ">Неверно</span><br>Советуем повторить : <br>
+            <div  style="cursor:pointer; " data-ng-repeat = "item2 in item.help">
+                <a ng-click = "vm.redirectClick(item2)">{{item2.slice(1,item2.length).split('/').join('->')}} </a>
+                <br/>
+            </div>
+        </div>
+        <br/>
+    </div>
 
-        function callFunction(obj,error){
-          a=obj.a;
-          b=obj.b;
-          abil=obj.abil;
-            switch(abil){
-                case 'plus' : return a+b;
-                case 'minus' : return a>b? a-b : b-a;
-                case 'multiplication' : return a*b;
-                case 'div' : return a/b;
-                default : {error(); return 0;}
-            }
-        }
-    console.log(callFunction(ad,error));
-</pre></i> в произойдет".
-    30
-    'ERROR' 0
-    произойдет ошибка
+    <!--<hr>-->
+    <!--Вопрос 1. Выберите синтаксически корректную JavaScript команду для вызова функции "callFunction(d,c,a)".-->
+    <!--<form action="">-->
+        <!--<input type="radio" name="quest1" value=""/> function callFunction(d,c,a) <br/>-->
+        <!--<input type="radio" name="quest1" value=""/>  callFunction(d) <br/>-->
+        <!--<input type="radio" name="quest1" value=""/> new callFunction(d,c,a) <br/>-->
+        <!--<button id="quest1">Проверить</button>-->
+    <!--</form>-->
+
+    <!--<br/>-->
+    <!--Вопрос 2. Выберите синтаксически корректную JavaScript команду для объявления функции вызванной : "callFunction(a,d)".-->
+    <!--<form action="">-->
+        <!--<input type="radio" name="quest2" value=""/> function callFunction(b){}; <br/>-->
+        <!--<input type="radio" name="quest2" value=""/>  var callFunction(a,b){} <br/>-->
+        <!--<input type="radio" name="quest2" value=""/> new cllFunction(a,b){} <br/>-->
+        <!--<button id="quest2">Проверить</button>-->
+    <!--</form>-->
+
+    <!--<br/>-->
+    <!--Вопрос 3. Выберите высказывание об описанном ниже коде  содержащее ошибку.-->
+        <!--код : var i = function(a,c){};-->
+    <!--<form action="">-->
+        <!--<input type="radio" name="quest2" value=""/> Объявленную функцию можно передать объекта в качестве свойства. <br/>-->
+        <!--<input type="radio" name="quest2" value=""/>  переменная i - это объект <br/>-->
+        <!--<input type="radio" name="quest2" value=""/> переменную i можно передать в качестве параметра <br/>-->
+        <!--<button id="quest2">Проверить</button>-->
+    <!--</form>-->
+
+
+
+
+    <!--Вопрос 3. В результате выполнения кода <i><pre>-->
+    <!--var ad = { abil : 'pls', a:function(a+b), b: 17};-->
+     <!--var error = function(){-->
+       <!--console.log('ERROR');-->
+     <!--};-->
+
+        <!--function callFunction(obj,error){-->
+          <!--a=obj.a;-->
+          <!--b=obj.b;-->
+          <!--abil=obj.abil;-->
+            <!--switch(abil){-->
+                <!--case 'plus' : return a+b;-->
+                <!--case 'minus' : return a>b? a-b : b-a;-->
+                <!--case 'multiplication' : return a*b;-->
+                <!--case 'div' : return a/b;-->
+                <!--default : {error(); return 0;}-->
+            <!--}-->
+        <!--}-->
+    <!--console.log(callFunction(ad,error));-->
+<!--</pre></i> в произойдет".-->
+    <!--30-->
+    <!--'ERROR' 0-->
+    <!--произойдет ошибка-->
 </div>
