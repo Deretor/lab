@@ -12,11 +12,14 @@
             <input type="submit" value = "Проверить"></button>
         </form>
             </div>
-        <div id="collapse{{$index}}right" style=" border : 1px; height: 0; border-color:#ffffff ; border-style : solid; padding : 1%; border-top : none; border-radius: 5px;">
+        <!--<div style=" border : 1px; height: 0; border-color:#ffffff ; border-style : solid; padding : 1%; border-top : none; border-radius: 5px;" ng-bind-html="vm.answer">-->
+
+        <!--</div>-->
+        <div data-ng-if="vm.questionAnswer[$index] == true" style=" border : 1px;  border-color:#ffffff ; border-style : solid; padding : 1%; border-top : none; border-radius: 5px;">
            <span style="color: green; ">Правильно</span>
             <br/>
         </div>
-        <div id="collapse{{$index}}help" style=" height: 0; border : 1px; border-color:#ffffff; border-style : solid; padding : 1%; border-top : none; border-radius: 5px;">
+        <div data-ng-if="vm.questionAnswer[$index] == false" style="  border : 1px; border-color:#ffffff; border-style : solid; padding : 1%; border-top : none; border-radius: 5px;">
             <span style="color: red; ">Неверно</span><br>Советуем повторить : <br>
             <div  style="cursor:pointer; " data-ng-repeat = "item2 in item.help">
                 <a ng-click = "vm.redirectClick(item2)">{{item2.slice(1,item2.length).split('/').join('->')}} </a>

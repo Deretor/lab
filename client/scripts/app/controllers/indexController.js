@@ -39,6 +39,7 @@
         function getQuestions(){
             //console.info('123');
             vm.questionTemplate = indexService.getQuestions();
+            vm.questionAnswer =[];
             //console.info('kttttttt ',vm.questionTemplate)
         }
         getQuestions();
@@ -46,24 +47,28 @@
         vm.act=function(){
             console.log(arguments);
         };
-        vm.right = function(res,id){
-          console.log(arguments);
-            console.log($('#collapse'+id+'right'));
-          if(res == vm.form[id]){
-              $('#collapse'+id+'right').css('height', 0);
-            $('#collapse'+id+'right').animate({
-                height : '3%'
-            },300);
-            $('#help'+id+'help').css({'height' : 0});
-            return true;
-          }
 
-            $('#collapse'+id+'help').css('height' , 0);
-            $('#collapse'+id+'help').animate({
-                height : '3%'
-            },300);
-            $('#help'+id+'right').css('height', 0);
-            return false;
+
+        vm.right = function(res,id){
+            if(res == vm.form[id]){vm.questionAnswer[id]=true}
+            else {vm.questionAnswer[id]= false}
+          console.log(arguments);
+            //console.log($('#collapse'+id+'right'));
+          //if(res == vm.form[id]){
+          //    $('#collapse'+id+'right').css('height', 0);
+          //  $('#collapse'+id+'right').animate({
+          //      height : '3%'
+          //  },300);
+          //  $('#help'+id+'help').css({'height' : 0});
+          //  return true;
+          //}
+          //
+          //  $('#collapse'+id+'help').css('height' , 0);
+          //  $('#collapse'+id+'help').animate({
+          //      height : '3%'
+          //  },300);
+          //  $('#help'+id+'right').css('height', 0);
+          //  return false;
             //console.log($('#form'+id+'>input').type());
         };
         vm.arr = function(){console.log(vm.form)};

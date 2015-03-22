@@ -140,10 +140,10 @@
 
                 },
                 {
-                    question : 'Выберите синтаксически корректную JavaScript команду для вызова функции "callFunction(d,c,a)".',
+                    question : 'Выберите синтаксически корректную JavaScript команду для объявления функции, вызванной в виде "callFunction(d,c,a)".',
                     variants : [
-                        ' function callFunction(b){}',
-                        'var callFunction(a,b){} ',
+                        ' function callFunction(b){...}',
+                        'var callFunction(a,b){...} ',
                         'new callFunction(a,b)'
                     ],
                     right : 1,
@@ -152,13 +152,13 @@
         ]
                 },
                 {
-                    question : 'Выберите высказывание об описанном ниже коде содержащее ошибку. код : var i = function(a,c){};',
+                    question : 'Выберите высказывание об описанном далее коде содержащее ошибку. код : var i = function(a,c){};',
                     variants: [
                         'Объявленную функцию можно передать объекта в качестве свойства. ',
                         'переменная i - это объект',
                         'переменную i можно передать в качестве параметра'
                     ],
-                    right : 1,
+                    right : 2,
                     help : [
                         '/JavaScript: The Definitive Guide/Часть I. Основы JavaScript/Функции/Функции как данные',
                         '/JavaScript: The Definitive Guide/Часть I. Основы JavaScript/Функции/Вызов и определение функции/Литералы функций'
