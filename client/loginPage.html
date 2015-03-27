@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="content/css/index.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/treeExpandDirective.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+    <title>Login</title>
+</head>
+<body>
+<div data-ng-controller = "loginController as vm" class = "input-group" style="width: 300px; border-style: solid; border-color: #ffffff; border-radius: 10px; margin:15% auto" >
+    <form ng-submit="vm.submitLogin()" class="form-group" style="padding: 5px; ">
+        <input type="text" name="loginLogin" class="form-control" placeholder="login" style="padding: 5px ;width: 100%; "/><br/><br/>
+        <input type="password" name = "loginPass" class = "form-control" placeholder="password" style="padding: 5px;width: 100%; "/><br/><br/>
+        <input type="submit" name="loginSubmit" value="Войти" style="padding: 5px">
+    </form>
+</div>
+<!--core-->
+<script type="text/javascript" src="../core/script/angular.min.js"> </script>
+<script type="text/javascript" src="../core/script/angular-sanitize.js"> </script>
+<script type="text/javascript" src="../core/script/jquery-1.11.2.js"> </script>
+<script type="text/javascript" src="../core/script/bootstrap.min.js"> </script>
+<!--app-->
+<script type="text/javascript" src="scripts/app/app.js"> </script>
+<script type="text/javascript" src="scripts/app/config.js"> </script>
+<!--controller-->
+<script type="text/javascript" src="scripts/app/controllers/loginController.js"> </script>
+<!--service-->
+<script type="text/javascript" src="scripts/app/services/loginService.js"> </script>
+<!--repository-->
+<script type="text/javascript" src="scripts/app/repositories/loginRepository.js"> </script>
+<!--directives-->
+</body>
+</html>

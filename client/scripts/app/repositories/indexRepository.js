@@ -15,7 +15,11 @@
             publisher: 'O'+'&#39'+'REILLY',
             text: '<p> ' +
             'Пятое издание бестселлера «JavaScript. Подробное руководство» полностью обновлено.' +
-            'Часть I знакомит с основами JavaScript'+
+            'Часть I знакомит с основам' +
+            'и JavaScript <br/> <hr/>'+
+            'Цели : изучть и уметь применять функции javascript, а также знать некоторые их особенности<br/><hr/>'+
+            'Дополнительную информацию про функции javascript  и язык javascript в целом можно найти в полном учебнике JavaScript: The Definitive Guide (pdf format)'+
+
             '</p>',
             type: 'html/text',
             content: [
