@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html  data-ng-app="app">
+<head lang="ru">
+    <meta charset="UTF-8">
+    <title>
+        Электронный учебнинк
+    </title>
+    <!--css-->
+    <link href="content/css/index.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/treeExpandDirective.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="indexController as vm" >
+
+    <header class="header">
+        <div class="headerBlock">
+
+        </div>
+        <div class="bookName">
+            <span>{{vm.bookname}}</span>
+        </div>
+    </header>
+
+    <div class="leftControlBlock">
+
+        <div class="contentBlock">
+            <div class="contentHead">
+                {{vm.directory}}
+            </div>
+            <div class="contentBody">
+               <div tree-expandable-directive="" family="vm.bookContentList" children="includes" class="expand1">
+                  <a href="#" data-ng-if = "child.type !== 'nonText' " data-ng-click = "vm.redirectClick(child.path)">{{child.name}}</a>
+                  <span data-ng-if = "child.type === 'nonText' ">{{child.name}}</span>
+               </div>
+            </div>
+        </div>
+    </div>
+    <div class="bookSpace"  >
+        <div class="bookText" data-ng-if="vm.ch.content.type == 'html/text' " ng-bind-html=" vm.ch.content.text"></div>
+        <div class="bookText" data-ng-if="vm.ch.content.type == 'html/urlTemplate' " ng-include = "vm.ch.content.templateUrl"></div>
+    </div>
+
+    <footer class="footer">
+           <span>Автор : {{vm.bookAuthor}}</span><br/>
+           <span>Издатель : <span ng-bind-html="vm.bookPublisher"></span></span>
+    </footer>
+<!--core-->
+    <script type="text/javascript" src="../core/script/angular.min.js"> </script>
+    <script type="text/javascript" src="../core/script/angular-sanitize.js"> </script>
+    <script type="text/javascript" src="../core/script/jquery-1.11.2.js"> </script>
+    <script type="text/javascript" src="../core/script/bootstrap.min.js"> </script>
+<!--app-->
+    <script type="text/javascript" src="scripts/app/app.js"> </script>
+    <script type="text/javascript" src="scripts/app/config.js"> </script>
+<!--controller-->
+    <script type="text/javascript" src="scripts/app/controllers/indexController.js"> </script>
+<!--service-->
+    <script type="text/javascript" src="scripts/app/services/indexService.js"> </script>
+<!--repository-->
+    <script type="text/javascript" src="scripts/app/repositories/indexRepository.js"> </script>
+<!--directives-->
+    <script type="text/javascript" src="scripts/app/directives/treeExpandableDirective.js"> </script>
+</body>
+</html>

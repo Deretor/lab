@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="../client/content/css/index.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/treeExpandDirective.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+    <title>Login</title>
+</head>
+<body ng-controller="loginController as vm">
+<div  data-ng-if="vm.Vmode == vm.modeAr[0]"  class = "input-group" style="width: 400px; border-style: solid; border-color: #ffffff; border-radius: 10px; margin:15% auto" >
+    <form ng-submit="vm.submitLogin()" class="form-group" style="padding: 5px; ">
+        <input type="text" name="loginLogin" ng-model="vm.loginLog" class="form-control" placeholder="login" style="padding: 5px ;width: 100%; "/><br/><br/>
+        <input type="password" name = "loginPass" ng-model="vm.loginPass" class = "form-control" placeholder="password" style="padding: 5px;width: 100%; "/><br/><br/>
+        <input type="submit" name="loginSubmit" class="btn" value="Войти"  style="padding: 5px">
+        <input type="button" name="toRegistr" value="Регистрация"  ng-click="vm.toReg()" class="btn" style="padding: 5px">
+    </form>
+</div>
+
+<div  data-ng-if="vm.Vmode == vm.modeAr[1]"  class = "input-group" style="width: 400px; border-style: solid; border-color: #ffffff; border-radius: 10px; margin:15% auto" >
+    <form ng-submit="vm.addUser()"  class="form-group" style="padding: 5px; ">
+        <input type="text" ng-model="vm.regGr" name = "loginGroup" required="" class = "form-control" placeholder="group" style="padding: 5px;width: 100%; "/><br/><br/>
+        <input type="text" name="loginLogin"  ng-model="vm.regLog" required="" class="form-control" placeholder="login" style="padding: 5px ;width: 100%; "/><br/><br/>
+        <input type="password" name = "loginPass" ng-model="vm.regPass" required=""  class = "form-control" placeholder="password" style="padding: 5px;width: 100%; "/><br/><br/>
+        <input type="password" name = "loginPass" ng-model="vm.regPassRe" required="" class = "form-control" placeholder="password" style="padding: 5px;width: 100%; "/><br/><br/>
+        <div class="button-group">
+            <input type="submit" name="regSubmit" value="Зарегистрировать"  class="btn" style="padding: 5px">
+            <input type="submit" name="regSubmit" value="Уже зарегистрирован"  ng-click="vm.toReg()" class="btn" style="padding: 5px">
+        </div>
+
+    </form>
+</div>
+<!--core-->
+<script type="text/javascript" src="../core/script/angular.min.js"> </script>
+<script type="text/javascript" src="../core/script/angular-sanitize.js"> </script>
+<script type="text/javascript"   src="../core/script/jquery-1.11.2.js"> </script>
+<script type="text/javascript" src="../core/script/bootstrap.min.js"> </script>
+<!--app-->
+<script type="text/javascript" src="../client/scripts/app/app.js"> </script>
+<script type="text/javascript" src="../client/scripts/app/config.js"> </script>
+<!--controller-->
+<script type="text/javascript" src="../client/scripts/app/controllers/loginController.js"> </script>
+<!--service-->
+<script type="text/javascript" src="../client/scripts/app/services/loginService.js"> </script>
+<!--repository-->
+<script type="text/javascript" src="../client/scripts/app/repositories/loginRepository.js"> </script>
+<!--directives-->
+</body>
+</html>

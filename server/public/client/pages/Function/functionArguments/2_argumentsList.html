@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<H2 CLASS="western">Функции 8.2.2. Списки аргументов
+    переменной длины: объект Arguments
+</H2>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">В теле функции
+    идентификатор arguments всегда имеет особый
+    смысл; arguments – это специальное свойство
+    объекта вызова, ссылающееся на объект,
+    известный как объект Arguments. Объект
+    Arguments – это нечто вроде массива,
+    позволяющего извлекать переданные
+    функции значения по номеру, а не по
+    имени. Объект Arguments также определяет
+    дополнительное свойство callee, которое
+    описано в следующем разделе.
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Хотя JavaScript
+    функция определяется с фиксированным
+    количеством именованных аргументов,
+    при вызове ей может быть передано любое
+    их число. Объект Arguments обеспечивает
+    полный доступ к значениям аргументов,
+    даже если у некоторых из них нет имени.
+    Предположим, что была определена функция
+    f, которая требует один аргумент, x. Если
+    вызвать эту функцию с двумя аргументами,
+    то первый будет доступен в функции по
+    имени параметра x или как arguments[0]. Второй
+    аргумент доступен только как arguments[1].
+    Кроме того, как и у всех массивов, у
+    arguments имеется свойство length, указывающее
+    на количество содержащихся в массиве
+    элементов. То есть в теле функции f,
+    вызываемой с двумя аргументами,
+    arguments.length имеет значение 2.</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> Объект
+    arguments может использоваться с самыми
+    разными целями. Следующий пример
+    показывает, как с его помощью проверить,
+    была ли функция вызвана с правильным
+    числом аргументов, – ведь JavaScript этого
+    за вас не сделает:
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function
+    f(x, y, z) { </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>//
+    Сначала проверяется, правильное ли
+    количество аргументов передано </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>if
+    (arguments.length != 3) { </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>throw
+    new Error(&quot;функция f вызвана с &quot; +
+    arguments.length + &quot;аргументами, а требуется
+    3.&quot;); } </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>// А
+    теперь сам код функции... </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>} </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Объект arguments
+    иллюстрирует важную возможность
+    JavaScript функций: они могут быть написаны
+    таким образом, чтобы работать с любым
+    количеством аргументов. Далее приводится
+    пример, показывающий, как можно написать
+    простую функцию max(), принимающую любое
+    число аргументов и возвращающую значение
+    самого большого из них (аналогично ведет
+    себя встроенная функция Math.max()):</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><SPAN LANG="en-US"><I>function
+    max(/*...*/) { </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>var
+    m = Number.NEGATIVE_INFINITY;</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>//
+    Цикл по всем аргументам, поиск и сохранение
+    наибольшего из них</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><SPAN LANG="en-US"><I>for(var
+    i = 0; i &lt; arguments.length; i++) </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>if
+    (arguments[i] &gt; m) m = arguments[i]; // </I></SPAN></FONT><FONT SIZE=2><I>Возвращаем</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>
+</I></SPAN></FONT><FONT SIZE=2><I>максимальный</I></FONT><FONT SIZE=2><SPAN LANG="en-US"><I>
+    return m;</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><I>}</I></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <SPAN LANG="en-US"><I>var</I></SPAN><I>
+</I><SPAN LANG="en-US"><I>largest</I></SPAN><I> = </I><SPAN LANG="en-US"><I>max</I></SPAN><I>(1,
+    10, 100, 2, 3, 1000, 4, 5, 10000, 6); </I>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Функции,
+    подобные этой и способные принимать
+    произвольное число аргументов, называются
+    функциями с переменным числом аргументов.
+    Этот термин возник вместе с появлением
+    языка программирования C.
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><B>Обратите
+    внимание</B>: функции с переменным числом
+    аргументов не должны допускать возможность
+    вызова с пустым списком аргументов.
+    Будет вполне разумным использовать
+    объект arguments[] при написании функции,
+    ожидающей получить фиксированное число
+    обязательных именованных аргументов,
+    за которыми может следовать произвольное
+    число необязательных неименованных
+    аргументов.
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Не следует
+    забывать, что arguments фактически не является
+    массивом – это объект Arguments. В каждом
+    объекте Arguments имеются пронумерованные
+    элементы массива и свойство length, но с
+    технической точки зрения – это не
+    массив. Лучше рассматривать его как
+    объект, имеющий некоторые пронумерованные
+    свойства. Спецификация ECMAScript не требует
+    от объекта Arguments реализации какоголибо
+    специфического для массива поведения.
+    Хотя, например, допускается присваивать
+    значение свойству arguments.length, ECMAScript не
+    требует этого для реального изменения
+    числа элементов массива, определенных
+    в объекте.</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> У объекта
+    Arguments есть одна очень необычная
+    особенность. Когда у функции имеются
+    именованные аргументы, элементы массива
+    объекта Arguments являются синонимами
+    локальных переменных, содержащих
+    аргументы функции. Массив arguments[] и
+    именованные аргументы – это два разных
+    средства обращения к одной переменной.
+    Изменение значения аргумента через имя
+    аргумента меняет значение, извлекаемое
+    через массив arguments[]. Изменение значения
+    аргумента через массив arguments[] меняет
+    значение, извлекаемое по имени аргумента.</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> Например:
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>function
+    f(x) { </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>print(x);
+    // Выводит начальное значение аргумента
+</I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>arguments[0]
+    = null; // Изменяя элементы массива, мы также
+    изменяем x </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>print(x);
+    // Теперь выводит &quot;null&quot; </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>} </I></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Определенно,
+    это не совсем то поведение, которое
+    можно было бы ожидать от настоящего
+    массива. В этом случае arguments[0] и x могли
+    бы ссылаться на одно и то же значение,
+    но изменение одной ссылки не должно
+    оказывать влияния на другую.
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Наконец,
+    следует учитывать, что arguments – это всего
+    лишь обычный JavaScript идентификатор, а не
+    зарезервированное слово. Если функция
+    определит аргумент или локальную
+    переменную с таким же именем, объект
+    Arguments станет недоступным. По этой причине
+    следует считать слово arguments зарезервированным
+    и стараться избегать создавать переменные
+    с таким именем.</P>
+<H3 CLASS="western"> 8.2.2.1. Свойство callee
+</H3>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in">Помимо элементов
+    своего массива объект Arguments определяет
+    свойство callee, ссылающееся на исполняемую
+    в данный момент функцию. Его можно
+    использовать, например, для рекурсивного
+    вызова неименованных функций. Вот пример
+    неименованного функционального литерала,
+    вычисляющего факториал:
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>function(x)
+    {</I></SPAN></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"> <FONT SIZE=2><SPAN LANG="en-US"><I>if
+    (x &lt;= 1) return 1; </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><SPAN LANG="en-US"><I>return
+    x * arguments.callee(x  1); </I></SPAN></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT SIZE=2><I>}</I></FONT></P>
+</body>
+</html>
