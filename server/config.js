@@ -15,8 +15,9 @@
 var config={
     port:nconf.get('port'),
     host: nconf.get('host'),
-    startFile: nconf.get('startFile')
-}
+    startFile: nconf.get('startFile'),
+    session: nconf.get('session')
+};
 
 
 module.exports = config;

@@ -8,13 +8,13 @@
     app.factory('loginRepository',['$q','$location','$http',repoFunc]);
     var baseUrl = '/kto/req/';
     function repoFunc($q,$location,$http){
-        mockLoginArr=[
-            {
-                login: 'adminStud',
-                password : '12345'
-            }
-
-        ];
+        //mockLoginArr=[
+        //    {
+        //        login: 'adminStud',
+        //        password : '12345'
+        //    }
+        //
+        //];
         var addUser = function(user){
             mockLoginArr.push(user);
         };
@@ -25,16 +25,17 @@
                url: baseUrl + 'checkUser'
 
            };
-           //var req = {
-           //  username: user,
-           //    password: password
-           //};
-            var promise = $http(config,user);
-         //for(var log in mockLoginArr){
-         //    if(mockLoginArr[log].login === user.login && mockLoginArr[log].password === user.password )
-         //       return true;
-         //}
-         //  return false;
+
+           $http.post( baseUrl + 'checkUser', user).
+               success(function(data, status, headers, config) {
+                   // this callback will be called asynchronously
+                   // when the response is available
+               }).
+               error(function(data, status, headers, config) {
+                   // called asynchronously if an error occurs
+                   // or server returns response with an error status.
+               });
+
        };
 
         return  {

@@ -6,21 +6,52 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var log = require('winston');
+var express = require('express');
 var Firebird = require('node-firebird');
 var configF = require('./config.js');
-var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
+var session = require('express-session');
+//var conect = require('connect');
+
 var users = require('./routes/users');
 var ejs = require('ejs');
-//var session = require('express-session');
 var log = require('./libs/log')(module);
-log.info(configF);
+
+//var caminte = require('caminte');
+//log.info(Firebird);
+//log.info(caminte);
+var caminte = require('caminte');
+var CaminteStore = require('connect-caminte')(session);
 var app = express();
+var routs = require('./routes/index')(app);
+
+//var dbOptions = {
+//    host : 'localhost',
+//port : 3050,
+//database : path.join(__dirname, '/database/KTODB.FDB'),
+//user : 'SYSDBA',
+//password : 'masterkey'
+//};
+//var Schema = caminte.Schema;
+
+
+
+//var camintS = new CaminteStore(db);
+//console.log('aaa',camintS);
+//var schema = new Schema(db.driver, db);
+//Firebird.attach(dbOptions, function(err, db){
+//    if(err){log.error(err);}
+//    else{
+//
+//    }
+//});
+//log.info(schema);
+
+//app.set('database engine', Firebird);
 app.set('port',configF.port);
 app.set('host',configF.host);
 
@@ -44,38 +75,27 @@ app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//app.use(session({
-//    secret: '',
-//    name: '',
-//    //store: sessionStore, // connect-mongo session store
-//    proxy: true,
-//    resave: true,
-//    saveUninitialized: true
-//}));
 
-
-
-//app.use('/users', users);
-
-        app.route('/book').get(function(req, res) {
-        res.render('bookIndex.ejs',{
-            path: +'client'
-        });
-    });
-app.route('/').get(function(req, res) {
-    res.render('loginPage.ejs',{
-        path: +'client'
-    });
-});
-
-app.route('/kto/req/checkUser').post(function(req, res ) {
-        log.info(req);
-        log.info(res);
-    });
-
-
-app.use('/', routes);
-
+//app.get('/', function(req, res){
+//    var sess = req.session;
+//    if (sess.views) {
+//        log.info(sess.views);
+//        sess.views++;
+//        log.info(sess.views);
+//        res.end('<p>views: ' + sess.views + '</p>'
+//        + '<p>expires in: ' + (sess.cookie.maxAge / 1000) + 's</p>');
+//        console.log('aaa')
+//
+//    } else {
+//        sess.views = 1;
+//        console.log('bbb')
+//        res.end('welcome to the session demo. refresh!');
+//
+//    }
+//    console.log(sess);
+//    //next();
+//});
+app.use(routs);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -112,29 +132,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-//
-//app.use(function(req,res,next){
-//    if(req.url == '/')
-//        res.end('hello');
-//    else{
-//        next();
-//    }
-//});
-//app.use(function(req,res){
-//    res.send(404,'pageNotFound');
-//});
-//app.use(function(err,req,res,next){
-//    var code = err.message;
-//    switch(code){
-//        case 404 : res.send(404, 'page not found');
-//            break;
-//        case  403 : res.send(403, 'acces denied');
-//    }
-//});
 
-
-
-
-//
 //module.exports = app;
 
