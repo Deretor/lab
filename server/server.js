@@ -67,6 +67,13 @@ app.route('/').get(function(req, res) {
         path: +'client'
     });
 });
+
+app.route('/kto/req/checkUser').post(function(req, res ) {
+        log.info(req);
+        log.info(res);
+    });
+
+
 app.use('/', routes);
 
 app.use(express.static(path.join(__dirname, 'public')));

@@ -5,9 +5,9 @@
 (function(){
     var app = angular.module('app');
 
-    app.factory('loginRepository',[repoFunc]);
-
-    function repoFunc(loginRepository){
+    app.factory('loginRepository',['$q','$location','$http',repoFunc]);
+    var baseUrl = '/kto/req/';
+    function repoFunc($q,$location,$http){
         mockLoginArr=[
             {
                 login: 'adminStud',
@@ -18,12 +18,23 @@
         var addUser = function(user){
             mockLoginArr.push(user);
         };
+
        var testLogin = function(user){
-         for(var log in mockLoginArr){
-             if(mockLoginArr[log].login === user.login && mockLoginArr[log].password === user.password )
-                return true;
-         }
-           return false;
+           var config = {
+                method: 'post',
+               url: baseUrl + 'checkUser'
+
+           };
+           //var req = {
+           //  username: user,
+           //    password: password
+           //};
+            var promise = $http(config,user);
+         //for(var log in mockLoginArr){
+         //    if(mockLoginArr[log].login === user.login && mockLoginArr[log].password === user.password )
+         //       return true;
+         //}
+         //  return false;
        };
 
         return  {

@@ -21,12 +21,16 @@
             loginService.addUser(user);
         };
         var testUser = function(){
+            console.log('user test start');
             var user = {
                 login : vm.loginLog,
                 password : vm.loginPass
             };
            loginService.testUser(user);
             console.log(user);
+        };
+        vm.submitLogin = function(){
+            testUser();
         };
 
         vm.toReg = function(){
