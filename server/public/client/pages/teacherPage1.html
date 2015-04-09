@@ -1,0 +1,48 @@
+<div data-ng-controller = "teacherController as vm">
+    <div>Информация об оценках студентов</div>
+
+    <div>
+        <table>
+            <thead>
+            <th>Сиудент</th>
+            <th>Тест</th>
+            <th>Cуммарная оценка</th>
+            <th>Номер вопроса</th>
+            <th>Оцека</th>
+            </thead>
+            <div>
+                <table>
+                    <tbody>
+                    <tr data-ng-repeat="student in vm.view">
+                        <td>{{student.name}}</td>
+                        <td>
+                            <div>
+                                <table>
+                                    <tr data-ng-repeat="test in student.test">
+                                        <td>
+                                            {{test.tid}}
+                                        </td>
+                                        <td>{{test.marks}}</td>
+                                        <td>
+                                            <div>
+                                                <table>
+                                                    <tr data-ng-repeat="questionD in test.questionD">
+                                                        <td>{{questionD.qid}}</td>
+                                                        <td>{{questionD.mark}}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </table>
+    </div>
+
+</div>

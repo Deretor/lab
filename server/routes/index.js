@@ -194,6 +194,10 @@ module.exports = function routs(app){
         }
         res.end();
     });
+    router.get('/teacherPage',function(req,res){
+       res.render('teacherIndex.ejs');
+        res.end();
+    });
     router.get(baseUrl+'isAut',function(req, res ) {
         var resul=isAuth(req);
         //console.log(resul);
@@ -276,7 +280,7 @@ module.exports = function routs(app){
         var userT,users,resD;
         var res123=[];
         var queryObj={};
-        queryObj.sqlString = 'select * from STUDENTS1';
+        queryObj.sqlString = "select * from STUDENTS1 where ROLE = 'student'";
         accesDb(queryObj,dbOptions).then(function(result){
             //console.log('de',result);
             users = result;
@@ -315,18 +319,40 @@ module.exports = function routs(app){
                         }
                         //console.log('bbbbb');
                         var resP=[];
+                        var testO = {
+                            tid:'',
+                            markS: '',
+                            questions:[]
+                        };
+
                         for( j=0;j<resD.length;j++){
                             if(rs.testsI.indexOf(resD[j].tid) != -1 && resD[j].sid==rs.sid){
                                 resP.push(resD[j]);
                             }
                         }
+                        //console.log('resP',resP);
                         for(j=0;j<rs.testsI.length;j++){
-                            rs.tests[j]=[];
+                            //rs.tests[j]=[];
+                            for(var jn=0;jn<rs.testsI.length;jn++){
+                                rs.tests[j]={tid: rs.testsI[j],
+                                    markS: 0,
+                                    questions:[]};
+                            }
+
+                            console.log('rs.tests.length;',rs.tests.length);
                             for(var k=0;k<resP.length;k++)
                             {
-                                if(rs.testsI[j] == resP[k].tid){
-                                    rs.tests[j].push(resP[k]);
+                                for(var jn2=0;jn2<rs.tests.length;jn2++){
+                                    console.log(jn2,' jn  ',rs.tests[jn2],resP[k].tid);
+                                    if(rs.tests[jn2].tid == resP[k].tid)
+                                    {
+                                       rs.tests[jn2].markS =  rs.tests[jn2].markS+resP[k].smark;
+                                        rs.tests[jn2].questions.push(resP[k]);
+                                    }
                                 }
+                                //if(rs.testsI[j] == resP[k].tid){
+                                //    rs.tests[j].push(resP[k]);
+                                //}
                             }
                         }
 
