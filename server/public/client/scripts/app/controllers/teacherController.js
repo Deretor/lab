@@ -9,25 +9,27 @@
     function indexControllerF($scope,$q,$location,$http, indexService){
 
         var vm=this;
-        //vm.new11 = 'sdfjkn;vajs;djav';
-        //vm.directory = 'Содержание';
-        //vm.questionTemplate = [];
-        //vm.bookContentList = indexService.getList();
-        ////vm.bookContentList=[];
-        ////vm.bookContentList.push(indexService.getList());
-        //vm.bookname = 'Страница преподавателя';
-        //var rootPath = vm.bookContentList[0].path;
+        vm.new11 = 'sdfjkn;vajs;djav';
+        vm.directory = 'Группы';
+        vm.questionTemplate = [];
+        vm.bookContentList = indexService.getList();
+        vm.bookContentList=[];
+        vm.bookContentList.push(indexService.getList());
+        vm.bookname = 'Страница преподавателя';
+        var rootPath = vm.bookContentList[0].path;
         //console.log('rp',rootPath);
 
         //vm.ch = indexService.getChapter(rootPath);
         //console.log('ch+',vm.bookContentList,vm.ch);
-        //vm.bookAuthor = vm.bookContentList[0].author;
-        //vm.bookPublisher = vm.bookContentList[0].publisher;
+        vm.bookAuthor = vm.bookContentList[0].author;
+        vm.bookPublisher = vm.bookContentList[0].publisher;
         vm.view = [];
+        vm.overView=[];
+        vm.currentGroup='';
         vm.testQ=[];
         vm.userT=[];
         vm.groups=[];
-        vm.tamplatePage='../../client/pages/';
+        vm.tamplatePage='../../client/pages/teacherPage1.html';
         //vm.redirectClick = function(path){
         //    console.log('p',path);
         //    vm.ch = indexService.getChapter(path);
@@ -116,7 +118,21 @@
                 viewMapping(vm.userT,vm.testQ);
             });
         });
+        vm.choseGroup = function(group){
+          vm.currentGroup=group;
+            for(var i=0;i<vm.overView.length;i++)
+            {
+             if(vm.overView[i].name == group){
+                 vm.view.length=0;
+                     vm.view = vm.overView[i];
+             }
+            }
+            console.log('vm.view',vm.view);
 
+        };
+        vm.getView = function(){
+          return vm.view;
+        };
         function viewMapping(userT,testQ){
             vm.groups = [];
             for(var i=0;i<userT.length;i++){
@@ -126,6 +142,18 @@
                 }
             }
             console.log('gr',vm.groups);
+            if(vm.groups.length!== 0)vm.currentGroup=vm.groups[0];
+            for(var i1 = 0;i1< vm.groups.length;i1++){
+                var gr = {name: vm.groups[i1], students:[]};
+                for(var i2=0;i2<userT.length;i2++){
+                    if(userT[i2].group == gr.name){
+                        gr.students.push(userT[i2]);
+                    }
+                }
+                vm.overView.push(gr);
+            }
+            console.log('overWiew ',vm.overView );
+            vm.choseGroup(vm.groups[0]);
         }
         vm.arr = function(){console.log(vm.form)};
         console.log(vm.form);

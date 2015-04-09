@@ -31,21 +31,112 @@
             {{vm.directory}}
         </div>
         <div class="contentBody">
-            <!--<div tree-expandable-directive="" family="vm.bookContentList" children="includes" class="expand1">-->
-                <!--<a href="#" data-ng-if = "child.type !== 'nonText' " data-ng-click = "vm.redirectClick(child.path)">{{child.name}}</a>-->
+            <!--<div tree-expandable-directive="" family="vm.groups" children="includes" class="expand1">-->
+                <!--&lt;!&ndash;<a href="#" data-ng-if = "child.type !== 'nonText' " data-ng-click = "vm.redirectClick(child.path)">{{child.name}}</a>&ndash;&gt;-->
                 <!--<span data-ng-if = "child.type === 'nonText' ">{{child.name}}</span>-->
             <!--</div>-->
+            <ul>
+                <li data-ng-repeat="group in vm.groups"><a data-ng-click="vm.choseGroup(group)">{{group}}</a></li>
+            </ul>
         </div>
     </div>
 </div>
 <div class="bookSpace"  >
     <!--<div class="bookText" data-ng-if="vm.ch.content.type == 'html/text' " ng-bind-html=" vm.ch.content.text"></div>-->
-    <div class="bookText"  ng-include = "vm.tamplatePage"></div>
+    <!--<div class="bookText"  ng-include = "vm.tamplatePage"></div>-->
+    <div>
+        <!--<div>Информация об оценках студентов</div>-->
+        <style>
+            .smCol{
+                width: 10vw;
+            }
+            /*table{*/
+            /*background-color: # ;*/
+            /*}*/
+            th{
+                height: 40px;
+            }
+            tr{
+                min-height: 40px;
+                border-bottom-style: solid;
+                border-collapse: collapse;
+                border-width: 1px;
+
+            }
+            thead{
+                background-color: rgba(199, 189, 186, 0.100) !important;
+                border-bottom-style: solid;
+                border-collapse: collapse;
+                border-width: 1px;
+            }
+            tr:last-of-type{
+                border-bottom: none;
+            }
+            td,th{
+                text-align: center;
+            }
+            tbody tr:nth-of-type(even){
+                background-color: #B2ACAA !important;
+            }
+            tbody tr:nth-of-type(odd){
+                background-color: #BAB7B6 !important;
+            }
+
+        </style>
+        <div style="margin-top: 3vh">
+            <!--{{//vm.view.students[0].tests}}-->
+            <table>
+                <thead style="background-color: #9F9795 !important ;">
+                <th class="smCol">Студент</th>
+                <th class="smCol">Тест</th>
+                <th class="smCol">Cуммарный балл</th>
+                <th class="smCol">Макс. суммарный балл</th>
+                <th class="smCol">Номер вопроса</th>
+                <th class="smCol">Балл</th>
+                <th class="smCol"> Максимальный балл</th>
+                </thead>
+                <tbody class="tb1">
+                <div style="width: 100%; max-height: 70vh; overflow-y:auto; ">
+                    <table>
+                        <tr data-ng-repeat="student in vm.getView().students" style=" border-style: solid; border-width: 1px; border-top-style: none;">
+                            <td class="smCol" style="border-right-style: solid; border-width: 1px; border-color: rgb(128, 128, 128); ">{{student.fio}}</td>
+                            <td>
+                                <div>
+                                    <table>
+                                        <tr data-ng-repeat="test in student.tests">
+                                            <td class="smCol">
+                                                {{test.tid}}
+                                            </td >
+                                            <td class="smCol" >{{test.markM}}</td>
+                                            <td class="smCol" style="border-right-style: solid; border-width: 1px; border-color: rgb(128, 128, 128);">{{test.markS}}</td>
+                                            <td>
+                                                <div>
+                                                    <table>
+                                                        <tr data-ng-repeat="questionD in test.questions">
+                                                            <td class="smCol">{{questionD.qid}}</td>
+                                                            <td class="smCol">{{questionD.smark}}</td>
+                                                            <td class="smCol">{{questionD.mmark}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
 
 <footer class="footer">
-    <span>Автор : {{vm.bookAuthor}}</span><br/>
-    <span>Издатель : <span ng-bind-html="vm.bookPublisher"></span></span>
+    <!--<span>Автор : {{vm.bookAuthor}}</span><br/>-->
+    <!--<span>Издатель : <span ng-bind-html="vm.bookPublisher"></span></span>-->
 </footer>
 <!--core-->
 <script type="text/javascript" src="../../core/script/angular.min.js"> </script>

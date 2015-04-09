@@ -1,48 +1,86 @@
-<div data-ng-controller = "teacherController as vm">
-    <div>Информация об оценках студентов</div>
+    <div data-ng-controller = "teacherController as vm">
+        <!--<div>Информация об оценках студентов</div>-->
+        <style>
+            .smCol{
+                width: 10vw;
+            }
+            /*table{*/
+                /*background-color: # ;*/
+            /*}*/
+            th{
+                height: 40px;
+            }
+            tr{
+                min-height: 40px;
+                border-bottom-style: solid;
+                border-collapse: collapse;
+                border-width: 1px;
 
-    <div>
-        <table>
-            <thead>
-            <th>Сиудент</th>
-            <th>Тест</th>
-            <th>Cуммарная оценка</th>
-            <th>Номер вопроса</th>
-            <th>Оцека</th>
-            </thead>
-            <div>
-                <table>
-                    <tbody>
-                    <tr data-ng-repeat="student in vm.view">
-                        <td>{{student.name}}</td>
-                        <td>
-                            <div>
-                                <table>
-                                    <tr data-ng-repeat="test in student.test">
-                                        <td>
-                                            {{test.tid}}
-                                        </td>
-                                        <td>{{test.marks}}</td>
-                                        <td>
-                                            <div>
-                                                <table>
-                                                    <tr data-ng-repeat="questionD in test.questionD">
-                                                        <td>{{questionD.qid}}</td>
-                                                        <td>{{questionD.mark}}</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
+            }
+            thead{
+                background-color: rgba(199, 189, 186, 0.100) !important;
+                border-bottom-style: solid;
+                border-collapse: collapse;
+                border-width: 1px;
+            }
+            tr:last-of-type{
+                border-bottom: none;
+            }
+            td,th{
+                text-align: center;
+            }
+            tbody tr:nth-of-type(even){
+                background-color: #B2ACAA !important;
+            }
+            tbody tr:nth-of-type(odd){
+                background-color: #BAB7B6 !important;
+            }
 
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </table>
+        </style>
+        <div style="margin-top: 3vh">
+            <!--{{//vm.view.students[0].tests}}-->
+            <table>
+                <thead style="background-color: #9F9795 !important ;">
+                <th class="smCol">Студент</th>
+                <th class="smCol">Тест</th>
+                <th class="smCol">Cуммарный балл</th>
+                <th class="smCol">Номер вопроса</th>
+                <th class="smCol">Балл</th>
+                <th class="smCol"> Максимальный балл</th>
+                </thead>
+                <tbody class="tb1">
+                    <div style="width: 100%; max-height: 70vh; overflow-y:auto; ">
+                        <table>
+                            <tr data-ng-repeat="student in vm.getView().students" style=" border-style: solid; border-width: 1px; border-top-style: none;">
+                                <td class="smCol" style="border-right-style: solid; border-width: 1px; border-color: rgb(128, 128, 128); ">{{student.fio}}</td>
+                                <td>
+                                    <div>
+                                        <table>
+                                            <tr data-ng-repeat="test in student.tests">
+                                                <td class="smCol">
+                                                    {{test.tid}}
+                                                </td >
+                                                <td class="smCol" style="border-right-style: solid; border-width: 1px; border-color: rgb(128, 128, 128);">{{test.markS}}</td>
+                                                <td>
+                                                    <div>
+                                                        <table>
+                                                            <tr data-ng-repeat="questionD in test.questions">
+                                                                <td class="smCol">{{questionD.qid}}</td>
+                                                                <td class="smCol">{{questionD.smark}}</td>
+                                                                <td class="smCol">{{questionD.mmark}}</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-</div>

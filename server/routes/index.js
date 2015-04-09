@@ -12,6 +12,7 @@ var utf = require('utf8');
 var ascIIJson=require('ascii-json');
 var Q = require('q');
 var utf8 = require('utf8');
+var _und = require("underscore");
 
 var dbOptions = {
     host : 'localhost',
@@ -276,6 +277,22 @@ module.exports = function routs(app){
         });
     });
 
+    function equal( firstObj, secondObject ){
+        var keysFirstObj = Object.keys( firstObj );
+        var keysSecondObject = Object.keys( secondObject );
+        if ( keysFirstObj.length != keysSecondObject.length ) {
+            return false;
+        }
+        return !keysFirstObj.filter(function( key ){
+            if ( typeof firstObj[key] == "object" ||  Array.isArray( firstObj[key] ) ) {
+                return !Object.equal(firstObj[key], secondObject[key]);
+            } else {
+                return firstObj[key] !== secondObject[key];
+            }
+        }).length;
+    }
+
+
     router.get(baseUrl+'userT',function(req,res){
         var userT,users,resD;
         var res123=[];
@@ -336,6 +353,7 @@ module.exports = function routs(app){
                             for(var jn=0;jn<rs.testsI.length;jn++){
                                 rs.tests[j]={tid: rs.testsI[j],
                                     markS: 0,
+                                    markM: 0,
                                     questions:[]};
                             }
 
@@ -343,22 +361,41 @@ module.exports = function routs(app){
                             for(var k=0;k<resP.length;k++)
                             {
                                 for(var jn2=0;jn2<rs.tests.length;jn2++){
+
                                     console.log(jn2,' jn  ',rs.tests[jn2],resP[k].tid);
+
                                     if(rs.tests[jn2].tid == resP[k].tid)
                                     {
-                                       rs.tests[jn2].markS =  rs.tests[jn2].markS+resP[k].smark;
+                                       rs.tests[jn2].markS =  0;
+                                       rs.tests[jn2].markM =  0;
                                         rs.tests[jn2].questions.push(resP[k]);
+                                        rs.tests[jn2].questions=_und.uniq(rs.tests[jn2].questions);
+                                        _und.each(rs.tests[jn2].questions,function(obj){
+                                            rs.tests[jn2].markS = rs.tests[jn2].markS+obj.smark;
+                                            rs.tests[jn2].markM = rs.tests[jn2].markS+obj.mmark;
+                                        });
+                                        //_und.sortBy(rs.tests[jn2].questions);
+                                        //quid1.push(resP[k].qid);
                                     }
                                 }
-                                //if(rs.testsI[j] == resP[k].tid){
-                                //    rs.tests[j].push(resP[k]);
-                                //}
-                            }
-                        }
 
+                            }
+
+                        }
+                        //for(j=0;j<rs.tests.length;j++){
+                        //    var rests= rs.tests[j];
+                        //    for(var kn=0;kn<rests[i].questions;kn++){
+                        //        for(var kt=rests[i].questions-1;kt>=0;kt--){
+                        //            if(equal(kn<rests[i].questions[kn],kn<rests[i].questions[kt])){
+                        //                rests[i].questions.splice(kt,1);
+                        //            }
+                        //        }
+                        //
+                        //    }
+                        //}
                         res123.push(rs);
                     }
-                    //log.info('res123 ',res123);
+                    log.info('res123 ',res123);
                     res.header('charset','windows-1251');
                     res.send(res123);
                     res.end();
