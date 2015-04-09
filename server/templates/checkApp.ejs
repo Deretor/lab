@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="../client/content/css/index.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/treeExpandDirective.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../core/content/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+    <title>Login</title>
+</head>
+<body ng-controller="loginController as vm">
+<div data-ng-click="vm.toBook()"    class = "input-group" style="width: 400px; border-style: solid; border-color: #ffffff; border-radius: 10px; margin:15% auto" >
+    <span>К книге</span>
+</div>
+<div data-ng-click="vm.toTeacher()"   class = "input-group" style="width: 400px; border-style: solid; border-color: #ffffff; border-radius: 10px; margin:15% auto" >
+    <span>К интерфейсу преподавателя</span>
+</div>
+
+<!--core-->
+<script type="text/javascript" src="../core/script/angular.min.js"> </script>
+<script type="text/javascript" src="../core/script/angular-sanitize.js"> </script>
+<script type="text/javascript"   src="../core/script/jquery-1.11.2.js"> </script>
+<script type="text/javascript" src="../core/script/bootstrap.min.js"> </script>
+<!--app-->
+<script type="text/javascript" src="../client/scripts/app/app.js"> </script>
+<script type="text/javascript" src="../client/scripts/app/config.js"> </script>
+<!--controller-->
+<script type="text/javascript" src="../client/scripts/app/controllers/loginController.js"> </script>
+<!--service-->
+<script type="text/javascript" src="../client/scripts/app/services/loginService.js"> </script>
+<!--repository-->
+<script type="text/javascript" src="../client/scripts/app/repositories/loginRepository.js"> </script>
+<!--directives-->
+</body>
+</html>

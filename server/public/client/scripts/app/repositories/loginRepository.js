@@ -7,14 +7,29 @@
 
     app.factory('loginRepository',['$q','$location','$http',repoFunc]);
     var baseUrl = '/kto/req/';
+
     function repoFunc($q,$location,$http){
-        //mockLoginArr=[
-        //    {
-        //        login: 'adminStud',
-        //        password : '12345'
-        //    }
-        //
-        //];
+        var callServiceAsync = function (method, url, data) {
+            var deferred = $q.defer();
+
+            var requestConfig = {
+                method: method,
+                url: url
+            };
+            if (data) {
+                requestConfig.data = data;
+            }
+            var success = function (data) {
+                deferred.resolve(data);
+            };
+            var fail = function (status) {
+                deferred.reject(status);
+            };
+            $http(requestConfig).success(success).error(fail);
+
+            return deferred.promise;
+        };
+
         var addUser = function(user){
             mockLoginArr.push(user);
         };
@@ -25,16 +40,7 @@
                url: baseUrl + 'checkUser'
 
            };
-
-           $http.post( baseUrl + 'checkUser', user).
-               success(function(data, status, headers, config) {
-                   // this callback will be called asynchronously
-                   // when the response is available
-               }).
-               error(function(data, status, headers, config) {
-                   // called asynchronously if an error occurs
-                   // or server returns response with an error status.
-               });
+           return callServiceAsync(config.method,config.url,user);
 
        };
 
