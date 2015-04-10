@@ -372,7 +372,7 @@ module.exports = function routs(app){
                                         rs.tests[jn2].questions=_und.uniq(rs.tests[jn2].questions);
                                         _und.each(rs.tests[jn2].questions,function(obj){
                                             rs.tests[jn2].markS = rs.tests[jn2].markS+obj.smark;
-                                            rs.tests[jn2].markM = rs.tests[jn2].markS+obj.mmark;
+                                            rs.tests[jn2].markM = rs.tests[jn2].markM+obj.mmark;
                                         });
                                         //_und.sortBy(rs.tests[jn2].questions);
                                         //quid1.push(resP[k].qid);
